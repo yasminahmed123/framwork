@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container">
-      <a class="navbar-brand" href="#">
-        <img src="../../../assets/images/freshcart-logo.svg" alt="">
+      <a class="navbar-brand" >
+        <img src="assets/images/freshcart-logo.svg" alt="">
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -9,36 +9,49 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" href="#">home</a>
+            <a class="nav-link" routerLink="/home" routerLinkActive=" nav-active">home</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="#" >categories</a>
+            <a class="nav-link" routerLink="/categories" routerLinkActive="nav-active" >categories</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="#">brands</a>
+            <a class="nav-link" routerLink="/brands" routerLinkActive="nav-active">brands</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="#">product</a>
+            <a class="nav-link" routerLink="/products" routerLinkActive="nav-active">product</a>
           </li>
         </ul>
 
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
          
         
+            <li class="nav-item position-relative">
+                <a class="nav-link" routerLink="/wishlist" routerLinkActive=" nav-active" >wishlist <i class="fa-regular fa-heart"></i>
+   
+                      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                        3
+                        <span class="visually-hidden">unread messages</span>
+                      </span>
+             
+              </a>
+              </li>
   
-            <li class="nav-item">
-              <a class="nav-link" href="#">wishlist<i class="fa-regular fa-heart"></i></a>
+            <li class="nav-item position-relative">
+              <a class="nav-link" routerLink="/cart" routerLinkActive="nav-active">cart <i class="fa-solid fa-cart-shopping"></i>
+ 
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                      3
+                      <span class="visually-hidden">unread messages</span>
+                    </span>
+           
+            </a>
             </li>
   
             <li class="nav-item">
-              <a class="nav-link" href="#">cart</a>
-            </li>
-  
-            <li class="nav-item">
-              <a class="nav-link" href="#">logOut</a>
+              <a class="nav-link" routerLink="/logout" routerLinkActive="nav-active" >logOut</a>
             </li>
           </ul>
   

@@ -10,7 +10,6 @@ import { CartComponent } from './components/cart/cart.component';
 import { CategoriesComponent } from './components/categories/categories.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { OrdersComponent } from './components/orders/orders.component';
-import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { ProductsComponent } from './components/products/products.component';
 
 export const routes: Routes = [
@@ -18,7 +17,7 @@ export const routes: Routes = [
         {path:'',redirectTo:'signin' ,pathMatch:'full'},
            {path:'signup',component:SignupComponent},
            {path:'signin',component:SigninComponent},
-     ]
+     ],
 
      },
      {path:'',component:MainLayoutComponent,children:[
@@ -29,8 +28,7 @@ export const routes: Routes = [
         {path:'categories',component:CategoriesComponent},
         {path:'navbar',component:NavbarComponent},
         {path:'orders',component:OrdersComponent},
-        {path:'products-details',component:ProductDetailsComponent},
-        {path:'product',component:ProductsComponent},
+        {path:'products',component:ProductsComponent},
    
     ] },
      {path:'**',component:NotFoundComponent},

@@ -1,1 +1,23 @@
-<p>home works!</p>
+<div class="container">
+<div class="row">
+
+       
+            @for (product of allProducts; track $index) {
+                <div class="col-md-2">
+                <div class="product">
+              <img [src]="product.imageCover" alt="" class="w-100">
+              <h5 class="text-main">{{product.category.name}}</h5>
+              <h6 class="fw-bolder">{{product.title}}</h6>
+              <div class="d-flex justify-content-between">
+                <span>{{product.price}}EGP</span>
+                <span><i class="fa-regular fa-star rating-color"></i>{{product.ratingsAverage}}EGP</span>
+              </div>
+              <button class="btn bg-main text-white w-100 my-3">ADD TO CART</button>
+            </div>
+        </div>
+            }
+      
+
+
+</div>
+</div>
