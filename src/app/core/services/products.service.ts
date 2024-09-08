@@ -9,9 +9,15 @@ import { Observable } from 'rxjs';
 export class ProductsService {
 
   constructor(private _HttpClient:HttpClient) {} 
-
+      // allproduct 
     getProducts= ():Observable<any> =>{
        return   this._HttpClient.get(basUrl+'api/v1/products') ;
     };
+
+    //details
+    getProduct= (id:string):Observable<any> =>{
+      return   this._HttpClient.get(basUrl+`api/v1/products${id}`) ;
+   };
+ 
   
   }

@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ProductsService } from '../../core/services/products.service';
 
 @Component({
   selector: 'app-product-details',
@@ -9,18 +10,26 @@ import { ActivatedRoute } from '@angular/router';
   styleUrl: './product-details.component.scss'
 })
 export class ProductDetailsComponent {
+
+ 
+  private readonly _ProductsService =inject(ProductsService)
   private readonly _ActivatedRoute =inject(ActivatedRoute)
   ngOnInit(): void {
-  
+        let id:string |any =""
        this._ActivatedRoute.paramMap.subscribe({
         next:(param)=>{
           console.log(param.get('id'))
-          console.log(   this._ActivatedRoute.snapshot.params)
+          id = param.get('id')
         
-        },error :(err)=>{
-           console.log(err)
-
         }
+       })
+
+       
+       this._ProductsService.getProduct(id).subscribe({
+          next:(res)=>{
+            console.log(res.data)
+          }
+
        })
   }
 
