@@ -4,11 +4,12 @@ import { Product } from '../../core/interfaces/product';
 import { AuthService } from '../../core/services/auth.service';
 import { SliderComponent } from "../slider/slider.component";
 import { CategoriesSliderComponent } from "../category-slider/categories-slider.component";
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [SliderComponent, CategoriesSliderComponent],
+  imports: [SliderComponent, CategoriesSliderComponent,RouterLink],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
