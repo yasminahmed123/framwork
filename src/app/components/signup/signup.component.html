@@ -1,9 +1,13 @@
 <div class="container w-50 m-auto">
        <h3>Register Now :</h3>
-     <form  [formGroup]="register" (ngSubmit)="sendData()">
+     <form  [formGroup]="register" (ngSubmit)="sendData()" class=" bg-main-light rounded-4 shadow p-5 m-4">
    
         <label for="name:">name:</label>
-        <input type="text" class="form-control my-3" id="name" formControlName="name">
+        <input [ngClass]="{
+         'is-valid': !register.get('name')?.errors && (register.get('name')?.touched ||register.get('name')?.dirty),
+         'is-invalid': register.get('name')?.errors &&(register.get('name')?.touched ||register.get('name')?.dirty)
+     }"
+        type="text" class="form-control my-3 is-valid " id="name" formControlName="name" >
         <alertError [formName]="register" controlName="name"/>
 
         <label for="email:">email:</label>
@@ -16,8 +20,14 @@
         <alertError [formName]="register" controlName="password"/>
       
         <label for="rePassword:">rePassword:</label>
-        <input type="Password" class="form-control my-3" id="rePassword" formControlName="rePassword">
+        <input type="Password" class="form-control my-4" id="rePassword" formControlName="rePassword">
         <alertError [formName]="register" controlName="rePassword"/>
-         <button class=" btn bg-main w-50 text-white " > Register</button>
+        
+        <div class="text-danger my-3">{{errorMassage}}</div>
+
+        <button class=" btn bg-main w-50 text-white my-4" [disabled]="register.invalid ||isBtnSubmit" >
+         @if(!isBtnSubmit){Register}@else {<i class="fa-solid fa-spinner"></i>}
+          </button>
+           
      </form>
 </div>

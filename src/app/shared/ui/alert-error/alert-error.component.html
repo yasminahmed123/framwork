@@ -20,15 +20,24 @@
             }
 
             @if (formName.get(controlName)?.getError('pattern')) {
-                <li>Password confirmation is incorrect </li>
+                <li>Not Match  </li>
     
             }
-
-
-
-
-
-
+        
+            @if (formName.get(controlName)?.getError('newPassword')) {
+                <li>Enter New Password </li>
+    
+            }
+       
+            
           </ul>
       </div>
- }
+ }@else if(formName.getError('mismatch') && formName.get(controlName) ?.touched &&controlName == "rePassword" ){
+    <div class="alert alert-danger">
+        <ul class=" m-0">
+                <li>Password confirmation should match </li>
+          </ul>
+      </div>
+
+
+    }

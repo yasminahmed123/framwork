@@ -1,1 +1,26 @@
-<p>signin works!</p>
+<div class="container w-50 m-auto">
+    <h3>login Now :</h3>
+  <form  [formGroup]="logIn" (ngSubmit)="sendData()" class=" bg-main-light rounded-4 shadow p-5 m-3">
+
+     <label for="email:">email:</label>
+     <input type="email" class="form-control my-3"  id="email" formControlName="email">
+     <alertError [formName]="logIn" controlName="email"/>
+
+
+     <label for="password:">password:</label>
+     <input type="password" class="form-control my-3"  id="password" formControlName="password">
+     <alertError [formName]="logIn" controlName="password"/>
+   
+   
+    
+   <div class="d-felx align-items-center justify-content-end ">
+    <button class=" btn bg-main w-25 text-white my-4" [disabled]="logIn.invalid ||isBtnSubmit" >
+      @if(!isBtnSubmit){logIn}@else {<i class="fa-solid fa-spinner"></i>}
+       </button> 
+       
+       <a routerLink="/forget" routerLinkActive="router-link-active "  class="link-primary">Forget password</a>
+   </div>
+        
+  </form>
+</div>
+
