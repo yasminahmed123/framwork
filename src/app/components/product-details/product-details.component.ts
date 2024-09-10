@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductsService } from '../../core/services/products.service';
+import { Product } from '../../core/interfaces/product';
 
 @Component({
   selector: 'app-product-details',
@@ -11,7 +12,7 @@ import { ProductsService } from '../../core/services/products.service';
 })
 export class ProductDetailsComponent {
 
- 
+  product!: Product;
   private readonly _ProductsService =inject(ProductsService)
   private readonly _ActivatedRoute =inject(ActivatedRoute)
   ngOnInit(): void {
@@ -28,6 +29,7 @@ export class ProductDetailsComponent {
        this._ProductsService.getProduct(id).subscribe({
           next:(res)=>{
             console.log(res.data)
+            this.product =res.data
           }
 
        })

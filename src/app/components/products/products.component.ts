@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ProductsService } from '../../core/services/products.service';
 import { Product } from '../../core/interfaces/product';
 import { RouterLink } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { ChartService } from '../../core/services/cart.service';
 
 @Component({
   selector: 'app-products',
@@ -11,9 +13,11 @@ import { RouterLink } from '@angular/router';
   styleUrl: './products.component.scss'
 })
 export class ProductsComponent {
+  private readonly   _ChartService=inject(ChartService)
 
   allProducts:Product[]=[];
   constructor(private _ProductsService:ProductsService){}
+  private readonly toastr= inject(ToastrService)
 
   getProducts=()=>{
     this._ProductsService.getProducts()
@@ -23,6 +27,24 @@ export class ProductsComponent {
       });
     
   };
+
+   // add to chart 
+   addToCart =(productId: string )=>{
+     
+
+    this._ChartService.addproductToCart(productId).subscribe({
+     next:(res: any)=>{
+       console.log(res)
+       this.toastr.success("product add successfully")
+     }
+
+     ,error:(err: any)=>{
+       console.log(err)
+     }
+
+    })
+   }
+
   ngOnInit(): void {
     this.getProducts()
   }

@@ -1,1 +1,22 @@
-<p>product-details works!</p>
+
+    <div class="container py-4">
+        <div class="row">
+            <div class="col-md-3"> 
+                <img [src]="product?.imageCover" class="w-100" alt="">
+              </div>
+        
+              <div class="col-md-9 mt-5  pt-5 ">
+                <h2>{{product.title}} </h2>
+                <p>{{product.description}}</p>  
+                  <span>{{product?.category?.name}}</span>
+                  <div class="d-flex justify-content-between ">
+                    <span>{{product.price}}EGP</span>
+                    <span><i class="fa-regular fa-star rating-color"></i>{{product.ratingsAverage}}</span>
+
+                  </div>
+
+                  <button class="btn bg-main text-white my-3 w-25 text-center ">ADD TO CHART</button>
+              </div>
+       
+    </div>
+

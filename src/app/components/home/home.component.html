@@ -20,7 +20,7 @@
             <span><i class="fa-regular fa-star rating-color"></i>{{product.ratingsAverage}}EGP</span>
           </div>
       </div>
-      <button class="btn bg-main text-white w-100 my-3">ADD TO CART</button>
+      <button  (click)="addToCart(product._id)" class="btn bg-main text-white w-100 my-3">ADD TO CART</button>
     </div>
   </div>
   }
