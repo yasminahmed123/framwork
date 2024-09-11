@@ -1,0 +1,10 @@
+<div class="container bg-light my-5 p-5 rounded">
+    <h3>adress: </h3>
+    <form [formGroup]="Address" (ngSubmit)="payment()" >
+
+         <textarea class="form-control my-2" placeholder="details....." formControlName="detail"></textarea>
+        <input type="tel" class="form-control my-2" placeholder="enter your phone" formControlName="phone" >
+        <input type="tel" class="form-control my-2" placeholder="enter your city" formControlName="city" >
+        <button class="btn bg-main text-white w-25 my-3">pay</button>
+    </form>
+</div>
