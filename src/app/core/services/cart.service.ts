@@ -7,6 +7,9 @@ import { basUrl } from '../../enviroment/enviroment.local';
   providedIn: 'root'
 })
 export class ChartService {
+
+  cartCount:number= 0;
+  
   headers = { token :localStorage.getItem('token')!}
   constructor(private _HttpClient:HttpClient) {} 
       //addproductToCart

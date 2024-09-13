@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { ChartService } from '../../core/services/cart.service';
 import { Cart } from '../../core/interfaces/cart';
 import { RouterLink } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-cart',
@@ -11,7 +12,8 @@ import { RouterLink } from '@angular/router';
   styleUrl: './cart.component.scss'
 })
 export class CartComponent {
-   
+  private readonly   toastr=inject(ToastrService)
+
    cart:Cart ={} as Cart
    isLoading :boolean =true 
 
@@ -35,6 +37,22 @@ export class CartComponent {
     })
   }
 product: any;
+
+deleteItem=(productId:string)=>{
+   this._ChartService.removeItem(productId).subscribe({
+      next:(res)=>{
+         console.log(res)
+          this.cart = res
+          this.toastr.success("product deleted successfully",'',{
+            progressBar :true ,
+            progressAnimation: 'increasing'
+          })
+      },error:(err)=>{
+        console.log(err)
+      }
+     
+   })
+}
   ngOnInit(): void {
  this.GetLoggedusercart()
     

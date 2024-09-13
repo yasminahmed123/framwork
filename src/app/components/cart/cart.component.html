@@ -1,44 +1,48 @@
 @if (!isLoading) {
-    <div class="container  my-5 bg-main-light rounder-4">
+    @if (cart.numOfCartItems !=0) {
+        <div class="container  my-5 bg-main-light rounder-4">
      
-        <h2>shop cart: </h2>
-        <h3>{{cart.numOfCartItems}}</h3>
-        <p class="text-main m-3"> total cart price :{{cart.data.totalCartPrice}} EGP </p>
-           @for (product of cart.data.products; track $index) {
-
-
-            <div class="row my-3 border-bottom">
-                <div class="col-md-1">
-                  <img [src]="product.product.imageCover" alt="" class="w-100">
-                </div>
-                <div class="col-md-11 d-flex justify-content-between">
-                    <div class="mx-5">
-                        <h4>{{product.product.title}}</h4>
-                        <p class="text-main">price: {{product.price}}EGP</p>
-                        <button class="btn bg-main text-white  my-3"><i class="fa-solid fa-trash-can" ></i> remove </button>
+            <h2>shop cart: </h2>
+            <h3>{{cart.numOfCartItems}}</h3>
+            <p class="text-main m-3"> total cart price :{{cart.data.totalCartPrice}} EGP </p>
+               @for (product of cart.data.products; track $index) {
+    
+    
+                <div class="row my-3 border-bottom">
+                    <div class="col-md-1">
+                      <img [src]="product.product.imageCover" alt="" class="w-100">
                     </div>
-                    <div class="mx-5">
-                     <button class="btn main-border ">-</button>
-                     <span class="mx-2">{{product.count}}</span>
-                     <button class="btn  main-border">+</button>
+                    <div class="col-md-11 d-flex justify-content-between">
+                        <div class="mx-5">
+                            <h4>{{product.product.title}}</h4>
+                            <p class="text-main">price: {{product.price}}EGP</p>
+                            <button  (click)="deleteItem(product.product._id)"  class="btn bg-main text-white  my-3"><i class="fa-solid fa-trash-can" ></i> remove </button>
+                        </div>
+                        <div class="mx-5">
+                         <button class="btn main-border ">-</button>
+                         <span class="mx-2">{{product.count}}</span>
+                         <button class="btn  main-border">+</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-           }
-           <button [routerLink]="['/address',cart.cartId]" class="btn bg-main text-white w-25 my-3">place order </button>
-
- 
-
-
-
-
-
-
-
-
-
-
-     </div>
+               }
+               <button [routerLink]="['/address',cart.cartId]" class="btn bg-main text-white w-25 my-3">place order </button>
+    
+     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+         </div>
+    }@else {
+        <h3 class="text-main my-4">cart is empty </h3>
+    }
 }@else {
     <h3 class="text-main my-4">loading ....</h3>
 }

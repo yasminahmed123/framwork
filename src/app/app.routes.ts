@@ -9,17 +9,17 @@ import { BrandsComponent } from './components/brands/brands.component';
 import { CartComponent } from './components/cart/cart.component';
 import { CategoriesComponent } from './components/categories/categories.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { OrdersComponent } from './components/orders/orders.component';
 import { ProductsComponent } from './components/products/products.component';
 import { authGuard } from './core/guards/auth.guard';
 import { loggedGuardGuard } from './core/guards/logged-guard.guard';
 import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { AdressComponent } from './components/adress/adress.component';
+import { WishlistComponent } from './components/wishlist/wishlist.component';
 
 
 export const routes: Routes = [
-     {path:'',component:AuthLayoutComponent,canActivate:[ loggedGuardGuard],children:[
+     {path:'',component:AuthLayoutComponent,canActivate:[loggedGuardGuard],children:[
         {path:'',redirectTo:'signin' ,pathMatch:'full'},
            {path:'signup',component:SignupComponent},
            {path:'signin',component:SigninComponent},
@@ -37,6 +37,7 @@ export const routes: Routes = [
         {path:'navbar',component:NavbarComponent},
         {path:'address/:id',component:AdressComponent},
         {path:'products',component:ProductsComponent},
+        {path:'wishlist',component:WishlistComponent},
         {path:'details/:id',component:ProductDetailsComponent,title :'details'},
    
     ] },

@@ -12,8 +12,8 @@
 
         <div [routerLink]="'/details/' + product._id">
 
-          <img [src]="product.imageCover" alt="" class="w-100">
-          <h5 class="text-main">{{product.category.name}}</h5>
+          <img [src]="product?.imageCover" alt="" class="w-100">
+          <h5 class="text-main">{{product?.category?.name}}</h5>
           <h6 class="fw-bolder">{{product.title.split(' ').slice(0,2).join(' ')}}</h6>
           <div class="d-flex justify-content-between">
             <span>{{product.price}}EGP</span>

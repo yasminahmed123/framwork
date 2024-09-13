@@ -1,1 +1,21 @@
-<p>brands works!</p>
+
+<section>
+    <div class="container my-4">
+        
+        @for (brand  of brandData; track $index) {
+          <!-- <h3>{{brand._id}}</h3> -->
+          <div class="d-flex justify-content-between align-items-between">
+           <div class="col-md-12 m-1 shadow text-center ">
+
+        
+      <img [src]="brand.image" alt="">
+       <h4>{{brand.name}}</h4>
+       <h5>{{brand.slug}}</h5>
+   
+    </div>
+
+     </div>
+        }
+    </div>
+
+</section>

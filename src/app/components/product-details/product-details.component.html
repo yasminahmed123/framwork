@@ -2,13 +2,13 @@
     <div class="container py-4">
         <div class="row">
             <div class="col-md-3"> 
-                <img [src]="product?.imageCover" class="w-100" alt="">
+                <img [src]="product.imageCover" class="w-100" alt="">
               </div>
         
               <div class="col-md-9 mt-5  pt-5 ">
                 <h2>{{product.title}} </h2>
                 <p>{{product.description}}</p>  
-                  <span>{{product?.category?.name}}</span>
+                  <span>{{product.category.name}}</span>
                   <div class="d-flex justify-content-between ">
                     <span>{{product.price}}EGP</span>
                     <span><i class="fa-regular fa-star rating-color"></i>{{product.ratingsAverage}}</span>

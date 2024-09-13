@@ -25,7 +25,14 @@ export class AdressComponent {
     payment =()=>{
           console.log(    this.Address.value)
           this._OrdersService.creatSession(this.cartId,this.Address.value).subscribe({
-            
+            next:(res)=>{
+              console.log(res)
+               window.location.href = res.session.url 
+
+            },error:(err)=>{
+               console.log(err)
+
+            }
           })
 
     }

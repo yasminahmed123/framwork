@@ -15,8 +15,8 @@ export class ProductDetailsComponent {
   product!: Product;
   private readonly _ProductsService =inject(ProductsService)
   private readonly _ActivatedRoute =inject(ActivatedRoute)
-  ngOnInit(): void {
-        let id:string |any =""
+  ngOnInit(): void { 
+        let id:string |null =""
        this._ActivatedRoute.paramMap.subscribe({
         next:(param)=>{
           console.log(param.get('id'))
