@@ -1,15 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { basUrl } from '../../enviroment/enviroment.local';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ChartService {
+  updateItem(productId: string) {
+    throw new Error('Method not implemented.');
+  }
+   cartCounter: BehaviorSubject<number> = new BehaviorSubject(0)
 
-  cartCount:number= 0;
-  
+
   headers = { token :localStorage.getItem('token')!}
   constructor(private _HttpClient:HttpClient) {} 
       //addproductToCart
@@ -23,14 +26,16 @@ export class ChartService {
     };
 
     //Update cart product quantity
-    updateProductQTY = (productId:string ,count:number ):Observable<any> =>{
-      return   this._HttpClient.put(`basUrl+'api/v1/cart'+productId`,{ count},{
-       headers:{
-        ...this.headers
-       }
-
-      }) ;
-   };
+    updateProductQTY = (productId: string, count: number): Observable<any> => {
+      return this._HttpClient.put(basUrl + 'api/v1/cart/'+ 
+         productId, {count }, 
+        {
+          headers: {
+            ...this.headers
+          }
+        }
+      );
+    };
 
    //Remove specific cart Item
    removeItem= (productId:string):Observable<any> =>{

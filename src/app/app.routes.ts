@@ -14,7 +14,7 @@ import { authGuard } from './core/guards/auth.guard';
 import { loggedGuardGuard } from './core/guards/logged-guard.guard';
 import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
-import { AdressComponent } from './components/adress/adress.component';
+import { AdressComponent } from './components/address/adress.component';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
 
 

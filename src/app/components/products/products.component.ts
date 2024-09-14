@@ -34,7 +34,7 @@ export class ProductsComponent {
 
     this._ChartService.addproductToCart(productId).subscribe({
      next:(res: any)=>{
-       console.log(res)
+      this._ChartService.cartCounter.next(res.numOfCartItems)
        this.toastr.success("product add successfully")
      }
 

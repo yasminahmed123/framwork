@@ -19,9 +19,9 @@
                             <button  (click)="deleteItem(product.product._id)"  class="btn bg-main text-white  my-3"><i class="fa-solid fa-trash-can" ></i> remove </button>
                         </div>
                         <div class="mx-5">
-                         <button class="btn main-border ">-</button>
+                         <button  (click)="updateQTY(product.product._id ,product.count +1)"    class="btn main-border ">+</button>
                          <span class="mx-2">{{product.count}}</span>
-                         <button class="btn  main-border">+</button>
+                         <button  [disabled]="product.count==1"   (click)="updateQTY(product.product._id ,product.count -1)"      class="btn  main-border">-</button>
                         </div>
                     </div>
                 </div>

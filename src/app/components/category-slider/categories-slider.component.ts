@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { OwlOptions } from 'ngx-owl-carousel-o/lib/models/owl-options.model';
 import { CatergoriesService } from '../../core/services/catergories.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-categories-slider',
@@ -11,6 +12,8 @@ import { CatergoriesService } from '../../core/services/catergories.service';
   styleUrl: './categories-slider.component.scss'
 })
 export class CategoriesSliderComponent {
+
+  cancelSubscription :Subscription =new Subscription()
   categories :any =[]
   private  readonly _CatergoriesService    =inject(CatergoriesService)
   customOptions: OwlOptions = {
@@ -43,7 +46,7 @@ export class CategoriesSliderComponent {
 
   getCatergories=()=>{
 
-  this._CatergoriesService.getCatergories().subscribe({
+  this.cancelSubscription= this._CatergoriesService.getCatergories().subscribe({
       next:(res)=>{ 
         console.log( res )
         this.categories =res.data ;
@@ -59,5 +62,9 @@ slidesStore: any;
 
   ngOnInit(): void {
           this.getCatergories()
+  }
+
+  ngOnDestroy(): void {
+    this.cancelSubscription.unsubscribe()
   }
 }

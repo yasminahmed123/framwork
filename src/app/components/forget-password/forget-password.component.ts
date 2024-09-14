@@ -4,6 +4,7 @@ import { signUpValidators } from '../../shared/ui/validators/register.validator'
 import { AlertErrorComponent } from "../../shared/ui/alert-error/alert-error.component";
 import { AuthService } from '../../core/services/auth.service';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-forget-password',
@@ -13,6 +14,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./forget-password.component.scss'] // تم التعديل إلى styleUrls
 })
 export class ForgetPasswordComponent {
+  cancelSubscription :Subscription =new Subscription()
 
   private readonly _AuthService = inject(AuthService);
   private readonly _Router = inject(Router);
@@ -33,7 +35,7 @@ export class ForgetPasswordComponent {
   });
 
   verfiyEmailSubmit(): void {
-    this._AuthService.SetEmailVerify(this.verifyEmail.value).subscribe({
+ this.cancelSubscription =   this._AuthService.SetEmailVerify(this.verifyEmail.value).subscribe({
 
       next:(res)=>{
         console.log(res)
@@ -75,5 +77,10 @@ export class ForgetPasswordComponent {
           console.log(err)
       }
     })
+  }
+
+
+  ngOnDestroy(): void {
+this.cancelSubscription.unsubscribe()
   }
 }

@@ -12,6 +12,9 @@ import { ToastrService } from 'ngx-toastr';
   styleUrl: './cart.component.scss'
 })
 export class CartComponent {
+updateProductQTY(arg0: string,arg1: number) {
+throw new Error('Method not implemented.');
+}
   private readonly   toastr=inject(ToastrService)
 
    cart:Cart ={} as Cart
@@ -41,6 +44,7 @@ product: any;
 deleteItem=(productId:string)=>{
    this._ChartService.removeItem(productId).subscribe({
       next:(res)=>{
+        this._ChartService.cartCounter.next(res.numOfCartItems)
          console.log(res)
           this.cart = res
           this.toastr.success("product deleted successfully",'',{
@@ -53,6 +57,27 @@ deleteItem=(productId:string)=>{
      
    })
 }
+
+
+updateQTY=(productId:string ,count:number )=>{
+  this._ChartService.updateProductQTY(productId,count).subscribe({
+     next:(res)=>{
+     
+       
+         this.cart = res
+         this.toastr.success("product updated successfully",'',{
+           progressBar :true ,
+           progressAnimation: 'increasing'
+         })
+     },error:(err)=>{
+       console.log(err)
+     }
+    
+  })
+}
+
+
+
   ngOnInit(): void {
  this.GetLoggedusercart()
     

@@ -7,6 +7,7 @@ import { CategoriesSliderComponent } from "../category-slider/categories-slider.
 import { RouterLink } from '@angular/router';
 import { ChartService } from '../../core/services/cart.service';
 import { ToastrService } from 'ngx-toastr';
+import { Subscriber, Subscription } from 'rxjs';
 
 
 @Component({
@@ -17,6 +18,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent implements OnInit {
+  cancelSubscription :Subscription =new Subscription()
      private readonly   _ChartService=inject(ChartService)
      private readonly   toastr=inject(ToastrService)
 
@@ -26,7 +28,7 @@ export class HomeComponent implements OnInit {
   }
 
   getProducts=()=>{
-    this._ProductsService.getProducts()
+   this.cancelSubscription = this._ProductsService.getProducts()
       .subscribe({
         next:(res)=>{this.allProducts= res.data;},
         error:(error)=>{}
@@ -38,9 +40,11 @@ export class HomeComponent implements OnInit {
     addToCart =(productId: string )=>{
      
 
-     this._ChartService.addproductToCart(productId).subscribe({
+      this.cancelSubscription =    this._ChartService.addproductToCart(productId).subscribe({
       next:(res)=>{
+        this._ChartService.cartCounter.next(res.numOfCartItems)
         console.log(res)
+        
         this.toastr.success("product add successfully",'',{
           progressBar :true ,
           progressAnimation: 'increasing'
@@ -59,4 +63,8 @@ export class HomeComponent implements OnInit {
     this.getProducts()
   }
 
+
+  ngOnDestroy(): void {
+  this.cancelSubscription.unsubscribe()
+  }
 }
