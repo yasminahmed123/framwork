@@ -8,12 +8,15 @@ import { RouterLink } from '@angular/router';
 import { ChartService } from '../../core/services/cart.service';
 import { ToastrService } from 'ngx-toastr';
 import { Subscriber, Subscription } from 'rxjs';
+import { DatePipe } from '@angular/common';
+import { SoldOutPipe } from '../../core/pipes/sold-out.pipe';
 
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [SliderComponent, CategoriesSliderComponent,RouterLink],
+  imports: [SliderComponent, CategoriesSliderComponent,RouterLink ,DatePipe,SoldOutPipe
+  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })

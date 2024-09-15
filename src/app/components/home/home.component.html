@@ -20,6 +20,8 @@
             <span><i class="fa-regular fa-star rating-color"></i>{{product.ratingsAverage}}EGP</span>
           </div>
       </div>
+      <p>{{product.createdAt | date :'mediumDate'}}</p>
+      <p class="text-danger my-1"> {{product.quantity | soldOut}}</p>
       <button  (click)="addToCart(product._id)" class="btn bg-main text-white w-100 my-3">ADD TO CART</button>
     </div>
   </div>
