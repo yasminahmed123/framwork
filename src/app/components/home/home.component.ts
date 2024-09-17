@@ -10,22 +10,27 @@ import { ToastrService } from 'ngx-toastr';
 import { Subscriber, Subscription } from 'rxjs';
 import { DatePipe } from '@angular/common';
 import { SoldOutPipe } from '../../core/pipes/sold-out.pipe';
+import { SearchPipe } from '../../core/pipes/search.pipe';
+import { FormsModule } from '@angular/forms';
 
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [SliderComponent, CategoriesSliderComponent,RouterLink ,DatePipe,SoldOutPipe
+  imports: [SliderComponent, CategoriesSliderComponent,RouterLink ,DatePipe,SoldOutPipe,SearchPipe,FormsModule
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
 export class HomeComponent implements OnInit {
+
+  Term:string =""
   cancelSubscription :Subscription =new Subscription()
      private readonly   _ChartService=inject(ChartService)
      private readonly   toastr=inject(ToastrService)
 
   allProducts:Product[]=[];
+    term: any;
   constructor(private _ProductsService:ProductsService , private token :AuthService){
     this.token.saveUserData()
   }

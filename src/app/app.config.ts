@@ -3,9 +3,14 @@ import { provideRouter, withHashLocation, withInMemoryScrolling, withViewTransit
 import { BrowserAnimationsModule, provideAnimations } from '@angular/platform-browser/animations';
 
 import { routes } from './app.routes';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { provideToastr } from 'ngx-toastr';
+import { headersInterceptor } from './core/interceptor/headers.interceptor';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes ,withHashLocation(),withViewTransitions(),withInMemoryScrolling({scrollPositionRestoration:'top'})),provideHttpClient(),importProvidersFrom(BrowserAnimationsModule),provideAnimations(),provideToastr()]
+  providers: [provideRouter(routes ,withHashLocation()
+    ,withViewTransitions(),withInMemoryScrolling({scrollPositionRestoration:'top'}))
+    ,provideHttpClient(withFetch() , withInterceptors([headersInterceptor]))
+    ,importProvidersFrom(BrowserAnimationsModule)
+    ,provideAnimations(),provideToastr()]
 };
