@@ -21,6 +21,7 @@ export class CategoriesSliderComponent {
     mouseDrag: true,
     touchDrag: true,
     pullDrag: true,
+    rtl:true,
     dots: true,
     navSpeed: 700,
     margin :10,

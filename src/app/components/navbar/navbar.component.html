@@ -6,30 +6,47 @@
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
+        <ul class="navbar-nav  mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" routerLink="/home" routerLinkActive=" nav-active">home</a>
+            <a class="nav-link" routerLink="/home" routerLinkActive=" nav-active">{{'navbar.home' |translate}}</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" routerLink="/categories" routerLinkActive="nav-active" >categories</a>
+            <a class="nav-link" routerLink="/categories" routerLinkActive="nav-active" >{{'navbar.categories'|translate}}</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" routerLink="/brands" routerLinkActive="nav-active">brands</a>
+            <a class="nav-link" routerLink="/brands" routerLinkActive="nav-active">{{'navbar.brands' |translate}}</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" routerLink="/products" routerLinkActive="nav-active">product</a>
+            <a class="nav-link" routerLink="/products" routerLinkActive="nav-active">{{'navbar.products' |translate}}</a>
           </li>
         </ul>
 
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <ul class="navbar-nav  mb-2 mb-lg-0">
          
         
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+             {{'navbar.lang' |translate}}
+            </a>
+            <ul class="dropdown-menu">
+              <li><a    [class.bg-info]="_TranslateService.currentLang=='en' "          (click)="selectLang('en')"         class="dropdown-item" href="#">English</a></li>
+              <li><a     [class.bg-info]="_TranslateService.currentLang=='ar' "                                        (click)="selectLang('ar')"            class="dropdown-item" href="#">عربي</a></li>
+          
+            </ul>
+          </li>
+
+
+
+
+
+
+
             <li class="nav-item position-relative">
-                <a class="nav-link" routerLink="/wishlist" routerLinkActive=" nav-active" >wishlist <i class="fa-regular fa-heart"></i>
+                <a class="nav-link" routerLink="/wishlist" routerLinkActive=" nav-active" >{{"navbar.wishlist" |translate}} <i class="fa-regular fa-heart"></i>
    
                       <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                         3
@@ -51,7 +68,7 @@
             </li>
   
             <li class="nav-item">
-              <a class="nav-link" routerLink="/signin" routerLinkActive="nav-active">Log Out</a>
+              <a class="nav-link" routerLink="/signin" routerLinkActive="nav-active">{{"navbar.logout" |translate}}</a>
             </li>
           </ul>
   

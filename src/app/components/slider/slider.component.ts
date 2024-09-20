@@ -16,6 +16,7 @@ export class SliderComponent {
     pullDrag: true,
     dots: true,
     navSpeed: 700,
+    rtl:true,
     navText: ['', ''],
     autoplayTimeout :1000,
     autoplayHoverPause :true,

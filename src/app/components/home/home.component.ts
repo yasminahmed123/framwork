@@ -12,12 +12,14 @@ import { DatePipe } from '@angular/common';
 import { SoldOutPipe } from '../../core/pipes/sold-out.pipe';
 import { SearchPipe } from '../../core/pipes/search.pipe';
 import { FormsModule } from '@angular/forms';
+import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
 
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [SliderComponent, CategoriesSliderComponent,RouterLink ,DatePipe,SoldOutPipe,SearchPipe,FormsModule
+  imports: [SliderComponent, CategoriesSliderComponent,
+    RouterLink ,DatePipe,SoldOutPipe,SearchPipe,FormsModule,NgxSpinnerModule 
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
@@ -28,17 +30,23 @@ export class HomeComponent implements OnInit {
   cancelSubscription :Subscription =new Subscription()
      private readonly   _ChartService=inject(ChartService)
      private readonly   toastr=inject(ToastrService)
-
+      
   allProducts:Product[]=[];
     term: any;
-  constructor(private _ProductsService:ProductsService , private token :AuthService){
+  constructor(private _ProductsService:ProductsService , private token :AuthService, 
+    // private spinner: NgxSpinnerService
+  ){
     this.token.saveUserData()
   }
 
   getProducts=()=>{
+    // this.spinner.show("spin1")
    this.cancelSubscription = this._ProductsService.getProducts()
       .subscribe({
-        next:(res)=>{this.allProducts= res.data;},
+        next:(res)=>{this.allProducts= res.data;
+          // this.spinner.hide("spin1")
+
+        },
         error:(error)=>{}
       });
     
