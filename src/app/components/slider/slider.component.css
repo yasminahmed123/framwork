@@ -1,0 +1,7 @@
+.custom-image {
+  margin-top: 20px;
+  height: 300px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+}/*# sourceMappingURL=slider.component.css.map */
